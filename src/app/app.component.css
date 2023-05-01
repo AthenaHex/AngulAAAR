@@ -1,0 +1,19 @@
+
+
+
+
+.side-menu{
+    position: sticky;
+    top:0;
+    left:0;
+}
+
+
+.middle-screen{
+    display: block;
+    margin-top: 7%;
+    margin-left: 8%;
+    margin-right: 8%;
+  }
+
+

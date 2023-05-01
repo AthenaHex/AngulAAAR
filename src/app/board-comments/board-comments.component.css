@@ -1,0 +1,50 @@
+
+
+.reschearch-bar{
+    padding:0.25%;
+    flex-direction:row;
+}
+
+.reschearch-bar > *{
+    margin: 0.25%;;
+}
+
+div{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(166, 177, 226);
+}
+
+.board-comment{
+    border: solid 3px black;
+}
+
+
+.first-line > td{
+    background-color: rgb(166, 226, 226);
+    border: solid 3px rgb(0, 0, 0);
+}
+
+.others-lines> td{
+    background-color: rgb(216, 255, 255);
+    border: solid 1px rgb(0, 0, 0);
+}
+
+.text{
+ text-align: left;
+}
+
+.number{
+    text-align: right;
+}
+
+
+
+
+
+
+
+
+
+
+

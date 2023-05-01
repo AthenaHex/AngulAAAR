@@ -1,0 +1,84 @@
+
+
+
+
+.menu-burger-button{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 150px;
+    height: 50px;
+    border: 2px solid #000000;
+    transition: 0.2s ease;
+}
+
+.menu-burger-button:hover{
+    border: 2px solid #2a9479FF;
+}
+
+.menu-burger-button > * {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+}
+
+
+.sidebar{
+    display: flex;
+    flex-direction:column;
+    height: 100%;
+    width: 12.5%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0%;
+    background-color: #2a9479;
+    padding-top: 3%;
+    transition: 1.5s ease;
+}
+
+#sidebarCloseButton{
+    text-align: center;
+    background-color: #56c4a8;
+    position: absolute;
+    margin: 10%;
+    padding: 5%;
+    right: 0;
+    top: 0;
+    border: solid 1px black;
+}
+
+#sidebarCloseButton:hover{
+    border: solid 1px #2a9479FF;
+}
+
+.sidebar > ul > * {
+    margin: 10%;
+}
+
+/*   Fait glisser la sidebar et le bouton du menu burger de la gauchen vers la droite    */
+.active{
+    left:0;
+    background-color: #2a9479FF;
+}
+
+.inactive{
+    left: -25%;
+    background-color: #2a947900;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

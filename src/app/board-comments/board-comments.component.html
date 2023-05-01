@@ -1,0 +1,70 @@
+
+
+
+
+
+
+<div class="reschearch-bar">
+    <label>Recherche : </label>
+    <input type="text" [(ngModel)]="listFilter">
+    <h5>{{listFilter | upperCaseTheFirstLetter}}</h5>
+</div>
+
+
+
+<div>
+    <table class="board-comment">
+        <thead>
+            <tr class="first-line">
+                <td>ID</td>
+                <td>Utilisateur</td>
+                <td>Commentaire</td>
+                <td>Note (/5)</td>
+                <td>Posté il y a (jours)</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="others-lines" *ngFor="let comment of comments">
+                <td>{{comment.commentId}}</td>
+                <td class="text">{{comment.user}}</td>
+                <td class="text">{{comment.userComment}}</td>
+                <td class="number">{{comment.userRate}}</td>
+                <td class="number">{{comment.oldnessOfPostInDays}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

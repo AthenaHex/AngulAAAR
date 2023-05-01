@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+
+<div class="menu-burger-button" (click)="openning()" [ngClass]="isActive ? 'inactive' : 'active' ">
+
+    <h2>Menu</h2>
+
+</div>
+
+<div class="sidebar" [ngClass]="isActive ? 'active' : 'inactive' ">
+    
+    <a id="sidebarCloseButton"  (click)="closing()">Fermer</a>
+
+    <ul>
+      <li><a href="#">Nos services</a></li>
+
+      <li><a href="#">Témoignages</a></li>
+
+      <li><a href="#">Contact</a></li>
+
+      <li><a href="#">A propos</a></li>
+    </ul>
+
+</div>
