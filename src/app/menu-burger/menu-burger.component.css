@@ -56,8 +56,10 @@
 }
 
 .sidebar > ul > * {
-    margin: 10%;
+    margin-top: 10%;
+    margin-left: 0%;
 }
+
 
 /*   Fait glisser la sidebar et le bouton du menu burger de la gauchen vers la droite    */
 .active{

@@ -1,69 +1,73 @@
 import { Component } from '@angular/core';
-import { Comment } from '../comment';
+import { Restaurant } from '../restaurant';
+import { RestaurantService } from '../restaurant.service';
+import { Observable, map } from 'rxjs';
+
 
 
 @Component({
   selector: 'app-board-comments',
   templateUrl: './board-comments.component.html',
-  styleUrls: ['./board-comments.component.css']
+  styleUrls: ['./board-comments.component.css'],
+  providers:[RestaurantService]
 })
 
 
 export class BoardCommentsComponent {
 
-  listFilter:string="";
+  // Variables __________________________________
+  private _listFilter:string="";
+  private _restaurants:Restaurant[] = [];
+  private _restaurantsFiltered:Restaurant[] = [];
+  errorMessage:string="";
 
-  comments: Comment[] = [
-    {
-      "commentId":1,
-      "user": "Bob",
-      "userComment": "Jamais je n'avais vu un restaurant comme celui là...",
-      "userRate":1.5,
-      "oldnessOfPostInDays":102
-    },
-    {
-      "commentId":2,
-      "user": "Léa",
-      "userComment": "Ils m'ont aidé à larguer mon ex.",
-      "userRate":5,
-      "oldnessOfPostInDays":52
-    },
-    {
-      "commentId":3,
-      "user": "Léo",
-      "userComment": "Je me suis fait larguer dans ce restaurant. Néanmoins délicieux, quoique un peu salé.",
-      "userRate":4.0,
-      "oldnessOfPostInDays":53
-    },
-    {
-      "commentId":4,
-      "user": "Jacque-André de la Camomille",
-      "userComment": "Bonjour, nul. -Jacque-André de la Camomille",
-      "userRate":0.5,
-      "oldnessOfPostInDays":42
-    },
-    {
-      "commentId":5,
-      "user": "Sophie",
-      "userComment": "Il y avait des poils dans mon plat !",
-      "userRate":1.2,
-      "oldnessOfPostInDays":10
-    },
-    {
-      "commentId":6,
-      "user": "Amélie",
-      "userComment": "Je compense la note de Sophie par ce que c'est moi qui ai mit les poils dans son plat.",
-      "userRate":3.5,
-      "oldnessOfPostInDays":10
-    },
-    {
-      "commentId":7,
-      "user": "Alexandre",
-      "userComment": "Un peu chère.",
-      "userRate":3.5,
-      "oldnessOfPostInDays":8
-    },
-  ]
+  // ___ Le constructeur défini la dépendance
+  constructor(private restaurantsService:RestaurantService){
+  };
+
+  // OnInit ________________________________________
+  ngOnInit():void{
+    // ___ Défini la variable restaurants_pas_filtrés comme le contenu du service (mock comme provenant d'en ligne)
+    this.restaurantsService.getRestaurants().subscribe({
+      next: restaurants =>                 // if ok
+        //console.log(" this._restaurantsFiltered:Restaurants[], type:"+ typeof this.restaurantsFiltered+", valeur:"+this.restaurantsFiltered);
+        this._restaurants = restaurants,     // <----------------------------- _restaurants -> OBSERVABLE ???
+      error:                               // if not ok
+        err => this.errorMessage = err        // Message d'erreur
+    });
+  };
+
+
+  // Getter et Setter __________________________________
+  
+  get restaurantsFiltered():Restaurant[]{
+    return this.performFilter(this._listFilter);
+  };
+
+  get listFilter():string{
+    return this._listFilter;
+  };
+
+  set restaurantsFiltered(value:Restaurant[]){
+    this._restaurantsFiltered = this.performFilter(this._listFilter);
+  };
+
+  set listFilter(value:string){
+    this._listFilter = value;
+  }
+
+  // Méthodes _____________________________________________________
+  // ___ Déclenche un évenement ailleurs lors du click sur les étoiles
+  onRatingClicked($event: string) {
+      console.log($event);
+    };
+  // ___ Défini les restaurants après filtre
+  performFilter(filterBy:string):Restaurant[] {
+    filterBy = filterBy.toLocaleLowerCase(); // le filtre en minuscule
+    this._restaurantsFiltered = this._restaurants.filter((rest:Restaurant)=> // Filtre si ...
+     rest.name.toLocaleLowerCase().includes(filterBy)); // ... le nom en minuscule == filtre en minuscule
+    return this._restaurantsFiltered;
+  };
 
 }
 

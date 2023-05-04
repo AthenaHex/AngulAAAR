@@ -1,0 +1,29 @@
+
+
+
+
+
+.star-crop{
+    width: 80px;
+    height: 30px;
+    cursor:default;
+}
+
+.stars-rectangle{
+    height: 30px;
+    /*border: solid 1px red;*/
+    overflow: hidden;
+}
+
+
+.star{
+    position: inherit;
+
+    color: gold;
+    font-size: 250%;
+
+}
+
+
+
+

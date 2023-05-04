@@ -3,33 +3,34 @@
 
 
 
-
+<!-- Barre de recherche -->
 <div class="reschearch-bar">
-    <label>Recherche : </label>
-    <input type="text" [(ngModel)]="listFilter">
+    <label>Recherche par nom : </label>
+    <input type="text" [(ngModel)]="listFilter" >
     <h5>{{listFilter | upperCaseTheFirstLetter}}</h5>
 </div>
 
+<!--(ngModelChange)="restaurantsFiltering()"-->
 
-
+<!-- Affichage des résultats -->
 <div>
     <table class="board-comment">
         <thead>
             <tr class="first-line">
-                <td>ID</td>
-                <td>Utilisateur</td>
-                <td>Commentaire</td>
-                <td>Note (/5)</td>
-                <td>Posté il y a (jours)</td>
+                <td>Nom</td>
+                <td>Ville</td>
+                <td>Rue</td>
+                <td>Email</td>
+                <td>Note (/100)</td>
             </tr>
         </thead>
         <tbody>
-            <tr class="others-lines" *ngFor="let comment of comments">
-                <td>{{comment.commentId}}</td>
-                <td class="text">{{comment.user}}</td>
-                <td class="text">{{comment.userComment}}</td>
-                <td class="number">{{comment.userRate}}</td>
-                <td class="number">{{comment.oldnessOfPostInDays}}</td>
+            <tr class="others-lines" *ngFor="let restaurant of restaurantsFiltered">
+                <td class="text">{{restaurant.name}}</td>
+                <td class="text">{{restaurant.city}}</td>
+                <td class="text">{{restaurant.street}}</td>
+                <td class="text">{{restaurant.email}}</td>
+                <td><app-stars [rating]='restaurant.rate' (ratingClicked)="onRatingClicked($event)"></app-stars></td>
             </tr>
         </tbody>
     </table>
