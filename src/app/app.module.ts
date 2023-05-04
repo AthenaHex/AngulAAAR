@@ -10,6 +10,8 @@ import { BoardCommentsComponent } from './board-comments/board-comments.componen
 import { UpperCaseTheFirstLetter } from './upperCaseTheFirstLetter.pipe';
 import { ForkComponent } from './fork/fork.component';
 import { StarsComponent } from './stars/stars.component';
+import { DetailsComponent } from './board-comments/details.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -21,11 +23,17 @@ import { StarsComponent } from './stars/stars.component';
     UpperCaseTheFirstLetter,
     ForkComponent,
     StarsComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    RouterModule.forRoot([
+      { path: 'list', component: BoardCommentsComponent},
+      { path: '', redirectTo: 'restaurants-advice', pathMatch: 'full' },
+      //{ path: '**', redirectTo: 'restaurants-advice', pathMatch: 'full'},
+    ]),
   ],
   providers: [
 
