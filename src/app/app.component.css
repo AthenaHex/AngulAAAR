@@ -11,9 +11,23 @@
 
 .middle-screen{
     display: block;
-    margin-top: 7%;
+    margin-top: 100px;
     margin-left: 8%;
     margin-right: 8%;
   }
 
 
+  .footer{
+    bottom:-4px;
+    width: 100%;
+    height: 200px;
+
+    background-color: rgb(126, 82, 82);
+    display: block;
+
+    padding: 0%;
+    margin-top: 10%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+}

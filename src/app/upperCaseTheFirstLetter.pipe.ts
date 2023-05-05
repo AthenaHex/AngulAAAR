@@ -17,7 +17,7 @@ export class UpperCaseTheFirstLetter implements PipeTransform{
             }
         );
 
-        return "=> "+newWord;
+        return ""+newWord;
     }
     
 }

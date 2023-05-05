@@ -5,9 +5,33 @@
 
 <!-- Barre de recherche -->
 <div class="reschearch-bar">
-    <label>Recherche par nom : </label>
-    <input type="text" [(ngModel)]="listFilter" >
-    <h5>{{listFilter | upperCaseTheFirstLetter}}</h5>
+    <div>
+        <label>Recherche : </label>
+        <input type="text" [(ngModel)]="listFilter" >
+        <h5>{{listFilter | deleteSpecialCharacters}}</h5>
+    </div>
+
+    <div>
+        <label> dans : </label>
+        <div>
+            <label>Nom : </label>
+            <input type="checkbox" name="nameCheck" [(ngModel)]="nameCheckBool">
+        </div>
+        <div>
+            <label>Ville : </label>
+            <input type="checkbox" name="cityCheck" [(ngModel)]="cityCheckBool">
+        </div>
+        <div>
+            <label>Rue : </label>
+            <input type="checkbox" name="streetCheck" [(ngModel)]="streetCheckBool">
+        </div>
+    </div>
+    
+    <div>
+
+        
+    </div>
+    
 </div>
 
 <!--(ngModelChange)="restaurantsFiltering()"-->
@@ -17,11 +41,11 @@
     <table class="board-comment">
         <thead>
             <tr class="first-line">
-                <td>Nom</td>
-                <td>Ville</td>
-                <td>Rue</td>
-                <td>Email</td>
-                <td>Note (/100)</td>
+                <td><div>Nom</div>               <div class="sort-arrow">+</div></td>
+                <td><div>Ville</div>                <div class="sort-arrow">+</div></td>
+                <td><div>Rue</div>                <div class="sort-arrow">+</div></td>
+                <td><div>Email</div>                <div class="sort-arrow">+</div></td>
+                <td><div>Note</div>                <div class="sort-arrow">+</div></td>
             </tr>
         </thead>
         <tbody>

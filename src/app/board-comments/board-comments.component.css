@@ -2,36 +2,51 @@
 
 .reschearch-bar{
     padding:0.25%;
-    flex-direction:row;
+    justify-content: stretch;
+    background-color: #5a63a8;
+    display: flex;
+    flex-direction: row;
 }
 
 .reschearch-bar > *{
     margin: 0.25%;;
 }
 
-div{
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(166, 177, 226);
-}
 
 .board-comment{
     border: solid 3px black;
 }
 
 
-.first-line > td{
+.first-line>td{
     background-color: rgb(166, 226, 226);
     border: solid 3px rgb(0, 0, 0);
+
 }
 
-.others-lines> td{
+.first-line>td>*{
+    display: inline;
+}
+
+.sort-arrow{
+    color:brown;
+    position: relative;
+    right: 0;
+}
+
+.sort-arrow:hover{
+    cursor: pointer;
+    color: red;
+}
+
+
+.others-lines > td{
     background-color: rgb(216, 255, 255);
     border: solid 1px rgb(0, 0, 0);
 }
 
 .text{
- text-align: left;
+    text-align: left;
 }
 
 .number{

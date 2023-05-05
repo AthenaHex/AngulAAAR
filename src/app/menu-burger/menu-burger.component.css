@@ -14,6 +14,7 @@
 
 .menu-burger-button:hover{
     border: 2px solid #2a9479FF;
+    cursor: pointer;
 }
 
 .menu-burger-button > * {
@@ -53,6 +54,7 @@
 
 #sidebarCloseButton:hover{
     border: solid 1px #2a9479FF;
+    cursor: pointer;
 }
 
 .sidebar > ul {

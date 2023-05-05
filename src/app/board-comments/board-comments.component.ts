@@ -20,6 +20,9 @@ export class BoardCommentsComponent {
   private _restaurants:Restaurant[] = [];
   private _restaurantsFiltered:Restaurant[] = [];
   errorMessage:string="";
+  private _nameCheckBool:boolean=true;
+  private _cityCheckBool:boolean=true;
+  private _streetCheckBool:boolean=false;
 
   // ___ Le constructeur défini la dépendance
   constructor(private restaurantsService:RestaurantService){
@@ -39,22 +42,44 @@ export class BoardCommentsComponent {
 
 
   // Getter et Setter __________________________________
-  
+  // ___ Liste des restaurants après filtre
   get restaurantsFiltered():Restaurant[]{
-    return this.performFilter(this._listFilter);
+    return this.performFilter(this._listFilter,this.nameCheckBool,this.cityCheckBool,this.streetCheckBool);;
   };
-
+  //___________ setter redondant car le getter fait setter :
+  set restaurantsFiltered(value:Restaurant[]){
+    this._restaurantsFiltered = this.performFilter(this._listFilter,this.nameCheckBool,this.cityCheckBool,this.streetCheckBool);
+  };
+  // ___ string du filtre
   get listFilter():string{
     return this._listFilter;
   };
-
-  set restaurantsFiltered(value:Restaurant[]){
-    this._restaurantsFiltered = this.performFilter(this._listFilter);
-  };
-
   set listFilter(value:string){
     this._listFilter = value;
+  };
+  // ___ informations sur l'étendu du filtre
+  // ______ Le nom
+  get nameCheckBool():boolean{
+    return this._nameCheckBool;
+  };
+  set nameCheckBool(value:boolean){
+    this._nameCheckBool=value;
   }
+  // ______ La ville
+  get cityCheckBool():boolean{
+    return this._cityCheckBool;
+  };
+  set cityCheckBool(value:boolean){
+    this._cityCheckBool=value;
+  }
+  // ______ La rue
+  get streetCheckBool():boolean{
+    return this._streetCheckBool;
+  };
+  set streetCheckBool(value:boolean){
+    this._streetCheckBool=value;
+  }
+
 
   // Méthodes _____________________________________________________
   // ___ Déclenche un évenement ailleurs lors du click sur les étoiles
@@ -62,10 +87,28 @@ export class BoardCommentsComponent {
       console.log($event);
     };
   // ___ Défini les restaurants après filtre
-  performFilter(filterBy:string):Restaurant[] {
-    filterBy = filterBy.toLocaleLowerCase(); // le filtre en minuscule
-    this._restaurantsFiltered = this._restaurants.filter((rest:Restaurant)=> // Filtre si ...
-     rest.name.toLocaleLowerCase().includes(filterBy)); // ... le nom en minuscule == filtre en minuscule
+  performFilter(filterBy:string,nameCheckBool:boolean,cityCheckBool:boolean,streetCheckBool:boolean):Restaurant[] {
+    this._restaurantsFiltered = this._restaurants;
+    if(!nameCheckBool&&!cityCheckBool&&!streetCheckBool){
+      
+    }else{
+      filterBy = filterBy.toLocaleLowerCase(); // le filtre en minuscule
+      if(nameCheckBool==true){
+        this._restaurantsFiltered = this._restaurantsFiltered.filter((rest:Restaurant)=> // Filtre si ...
+        rest.name.toLocaleLowerCase().includes(filterBy)); // ... le nom en minuscule contient le filtre en minuscule
+      };
+      if(cityCheckBool==true){
+        this._restaurantsFiltered = this._restaurantsFiltered.filter((rest:Restaurant)=> // Filtre si ...
+        rest.city.toLocaleLowerCase().includes(filterBy)); // ...
+      };
+      if(streetCheckBool==true){
+        this._restaurantsFiltered = this._restaurantsFiltered.filter((rest:Restaurant)=> // Filtre si ...
+        rest.street.toLocaleLowerCase().includes(filterBy)); // ... 
+      };
+    }
+
+    
+
     return this._restaurantsFiltered;
   };
 
