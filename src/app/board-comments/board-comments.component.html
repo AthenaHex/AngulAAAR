@@ -6,7 +6,7 @@
 <!-- Barre de recherche -->
 <div class="reschearch-bar">
     <div>
-        <label>Recherche : </label>
+        <label>Rechercher : </label>
         <input type="text" [(ngModel)]="listFilter" >
         <h5>{{listFilter | deleteSpecialCharacters}}</h5>
     </div>
@@ -27,17 +27,15 @@
         </div>
     </div>
     
-    <div>
-
-        
-    </div>
+    <div></div>
+    <div></div>
     
 </div>
 
 <!--(ngModelChange)="restaurantsFiltering()"-->
 
 <!-- Affichage des résultats -->
-<div>
+<div class="board">
     <table class="board-comment">
         <thead>
             <tr class="first-line">
@@ -46,6 +44,7 @@
                 <td><div>Rue</div>                <div class="sort-arrow">+</div></td>
                 <td><div>Email</div>                <div class="sort-arrow">+</div></td>
                 <td><div>Note</div>                <div class="sort-arrow">+</div></td>
+                <td>Actions</td>
             </tr>
         </thead>
         <tbody>
@@ -55,6 +54,11 @@
                 <td class="text">{{restaurant.street}}</td>
                 <td class="text">{{restaurant.email}}</td>
                 <td><app-stars [rating]='restaurant.rate' (ratingClicked)="onRatingClicked($event)"></app-stars></td>
+                <div class="others-lines-actions">
+                    <button>Actions 1</button>
+                    <button>Actions 2</button>
+                    <button>Actions 3</button>
+                </div>
             </tr>
         </tbody>
     </table>

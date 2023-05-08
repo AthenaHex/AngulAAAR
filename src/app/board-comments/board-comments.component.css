@@ -6,15 +6,20 @@
     background-color: #5a63a8;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .reschearch-bar > *{
     margin: 0.25%;;
 }
 
+.board{
+    background-color: rgb(170, 218, 218);
+}
 
 .board-comment{
     border: solid 3px black;
+    width: 100%;
 }
 
 
@@ -41,6 +46,13 @@
 
 
 .others-lines > td{
+    background-color: rgb(216, 255, 255);
+    border: solid 1px rgb(0, 0, 0);
+}
+
+.others-lines-actions{
+    display: flex;
+    flex-direction: column;
     background-color: rgb(216, 255, 255);
     border: solid 1px rgb(0, 0, 0);
 }
