@@ -1,0 +1,117 @@
+
+
+
+
+
+
+#comeback-button{
+    margin: 10px;
+    padding-top: 2px;
+    padding-right: 25px;
+    padding-bottom: 2px;
+    padding-left: 25px;
+    border: solid 1px black;
+    font-size: large;
+    color: rgb(211, 255, 255);
+    background-color: rgb(29, 161, 179);
+}
+
+#comeback-button:hover{
+    cursor: pointer;
+    border: solid 1px rgb(97, 202, 216);
+    background-color: rgb(97, 202, 216);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#sort-arrow{
+    border: none;
+    color: rgb(176, 246, 255);
+    background-color: rgb(29, 161, 179);
+    transition: 0.25s;
+}
+
+#sort-arrow:hover{
+    color: rgb(29, 161, 179);
+    background-color: rgb(176, 246, 255);
+    cursor: pointer;
+}
+
+/* rotation de flèches pour le trie : */
+.arrow-none{
+    rotate: 90deg;
+}
+.arrow-up{
+    rotate: 0deg;
+}
+.arrow-down{
+    rotate:180deg;
+}
+
+
+
+
+
+
+.board-comment{
+    background-color: rgb(170, 218, 218);
+    border: solid 3px black;
+    width: 100%;
+}
+
+
+.first-line>td{
+    background-color: rgb(166, 226, 226);
+    border: solid 3px rgb(0, 0, 0);
+
+}
+
+.first-line>td>*{
+    display: inline;
+}
+
+
+.others-lines > td{
+    background-color: rgb(216, 255, 255);
+    border: solid 1px rgb(0, 0, 0);
+}
+
+.others-lines-actions{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(216, 255, 255);
+    border: solid 1px rgb(0, 0, 0);
+}
+
+.text{
+    text-align: left;
+}
+
+.number{
+    text-align: right;
+}
+
+
+
+.none-result{
+    text-align: center;
+    width: 100%;
+    background-color: rgb(255, 216, 216);
+}
+
+
+
+
+
+
+

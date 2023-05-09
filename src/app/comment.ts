@@ -6,8 +6,8 @@
 
 export interface Comment{
     "commentId":number,
-    "user": string,
+    "commentRestaurantId": number,
     "userComment": string,
-    "userRate":number,
-    "oldnessOfPostInDays":number
+    "postDate":string,
+    "commentRate":number
   }

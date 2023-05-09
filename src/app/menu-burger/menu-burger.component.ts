@@ -9,12 +9,6 @@ export class MenuBurgerComponent {
 
   isActive:boolean = false;
 
-  ngOnInit():void{
-    console.log("Has started correctly");
-    console.log("isActive is : ");
-    console.log(this.isActive);
-  };
-
   openning():void{
     console.log("open");
     this.isActive=true;

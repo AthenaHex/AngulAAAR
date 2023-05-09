@@ -39,6 +39,7 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'list', component: BoardCommentsComponent},
+      { path: 'details/:idRestaurant', component: DetailsComponent},
       { path: '', redirectTo: 'restaurants-advice', pathMatch: 'full' },
       //{ path: '**', redirectTo: 'restaurants-advice', pathMatch: 'full'},
     ]),

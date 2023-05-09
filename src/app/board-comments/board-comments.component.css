@@ -1,5 +1,31 @@
 
 
+
+
+#sort-arrow{
+    border: none;
+    color: rgb(176, 246, 255);
+    background-color: rgb(29, 161, 179);
+    transition: 0.25s;
+}
+
+#sort-arrow:hover{
+    color: rgb(29, 161, 179);
+    background-color: rgb(176, 246, 255);
+    cursor: pointer;
+}
+
+/* rotation de flèches pour le trie : */
+.arrow-none{
+    rotate: 90deg;
+}
+.arrow-up{
+    rotate: 0deg;
+}
+.arrow-down{
+    rotate:180deg;
+}
+
 .reschearch-bar{
     padding:0.25%;
     justify-content: stretch;
@@ -26,22 +52,7 @@
 .first-line>td{
     background-color: rgb(166, 226, 226);
     border: solid 3px rgb(0, 0, 0);
-
-}
-
-.first-line>td>*{
-    display: inline;
-}
-
-.sort-arrow{
-    color:brown;
-    position: relative;
-    right: 0;
-}
-
-.sort-arrow:hover{
-    cursor: pointer;
-    color: red;
+    justify-content:space-around;
 }
 
 
@@ -67,7 +78,11 @@
 
 
 
-
+.none-result{
+    text-align: center;
+    width: 100%;
+    background-color: rgb(255, 216, 216);
+}
 
 
 

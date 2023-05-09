@@ -1,5 +1,57 @@
-<div class="card">
-    <div class="card-header">
-        {{pageTitle}}
-    </div>
-</div>
+
+
+<button id="comeback-button" routerLink="/list">&#8249;-- Revenir à la liste des restaurants  </button>
+
+
+
+
+<table class="board-comment">
+    <thead>
+        <tr class="first-line">
+            <td>Nom</td>
+            <td>Ville</td>
+            <td>Rue</td>
+            <td>Email</td>
+            <td>Note moyenne</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <!-- <td class="text">{{restaurant.name}}</td> -->
+            <!-- <td class="text">{{restaurant.city}}</td> -->
+            <!-- <td class="text">{{restaurant.street}}</td> -->
+            <!-- <td class="text">{{restaurant.email}}</td> -->
+            <!-- <td><app-stars [rating]='restaurant.rate'></app-stars></td> -->
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+<table class="board-comment">
+    <thead>
+        <tr>
+            <td><button id="sort-arrow" class="arrow-none">^</button>
+            <td><button id="sort-arrow" class="arrow-none">^</button>
+            <td><button id="sort-arrow" class="arrow-none">^</button>
+        </tr>
+        <tr class="first-line">
+            <!-- <td><div>Id </div></td>
+            <td><div>Id Restaurant</div></td> -->
+            <td>Date </td>
+            <td>Commentaire </td>
+            <td>Note (/100)</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="others-lines" *ngFor="let comment of commentsFiltered">
+            <!-- <td class="number">{{comment.commentId}}</td>
+            <td class="number">{{comment.commentRestaurantId}}</td> -->
+            <td class="text">{{comment.postDate}}</td>
+            <td class="text">{{comment.userComment}}</td>
+            <td class="number">{{comment.commentRate}}</td>
+        </tr>
+    </tbody>
+</table>

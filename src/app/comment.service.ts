@@ -1,22 +1,21 @@
-import { Injectable } from "@angular/core";
-import { Restaurant } from "./restaurant";
+import { Injectable } from '@angular/core';
+import { Comment } from "./comment";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable, catchError, tap, throwError } from "rxjs"; // Reactive extends (pour gerer les choses de manière asynchrone)
 
 @Injectable({
-        providedIn:'root',
-    })
-export class RestaurantService{
-
+  providedIn: 'root'
+})
+export class CommentService {
 
   // Mock http data
   constructor(private http:HttpClient){};
-  private restaurantUrl = 'api/restaurants/restaurants.json'; // Lien vers les mocks data
+  private commentsUrl = 'api/restaurants/comments.json'; // Lien vers les mocks data
 
   // Méthode de Getter
-  getRestaurants():Observable<Restaurant[]>{
-    return this.http.get<Restaurant[]>(this.restaurantUrl).pipe(
-      tap(data => console.log('Observable<Restaurant[]> : ', "log disabled")), // Pour print les données : JSON.stringify(data)
+  getComments():Observable<Comment[]>{
+    return this.http.get<Comment[]>(this.commentsUrl).pipe(
+      tap(data => console.log('Observable<Comment[]> : ', "log disabled")), // Pour print les données : JSON.stringify(data)
       catchError(this.handleError)
     );
   };
@@ -33,6 +32,5 @@ export class RestaurantService{
     console.error(errorMessage);
     return throwError(()=>errorMessage);
   };
-  
-  
+
 }

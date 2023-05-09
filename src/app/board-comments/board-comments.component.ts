@@ -28,7 +28,7 @@ export class BoardCommentsComponent {
   constructor(private restaurantsService:RestaurantService){
   };
 
-  // OnInit ________________________________________
+
   ngOnInit():void{
     // ___ Défini la variable restaurants_pas_filtrés comme le contenu du service (mock comme provenant d'en ligne)
     this.restaurantsService.getRestaurants().subscribe({
@@ -106,11 +106,16 @@ export class BoardCommentsComponent {
         rest.street.toLocaleLowerCase().includes(filterBy)); // ... 
       };
     }
-
-    
-
     return this._restaurantsFiltered;
   };
+
+  reinitialisation():void{
+    this._nameCheckBool = false;
+    this._cityCheckBool = false;
+    this._streetCheckBool = false;
+  }
+
+
 
 }
 
