@@ -39,11 +39,11 @@
     <table class="board-comment">
         <thead>
             <tr>
-                <td><button id="sort-arrow" class="arrow-none">^</button>
-                <td><button id="sort-arrow" class="arrow-none">^</button>
-                <td><button id="sort-arrow" class="arrow-none">^</button>
-                <td><button id="sort-arrow" class="arrow-none">^</button>
-                <td><button id="sort-arrow" class="arrow-none">^</button>
+                <td><button id="sort-arrow" class="arrow-none" (click)="setSortedBy('name')" [class.arrow-down]="sortedBy === 'name'">^</button>
+                <td><button id="sort-arrow" class="arrow-none" (click)="setSortedBy('city')" [class.arrow-down]="sortedBy === 'city'">^</button>
+                <td><button id="sort-arrow" class="arrow-none" (click)="setSortedBy('street')" [class.arrow-down]="sortedBy === 'street'">^</button>
+                <td></td>
+                <td></td>
                 <td></td>
             </tr>
             <tr class="first-line">
@@ -52,7 +52,7 @@
                 <td>Rue</td>
                 <td>Email</td>
                 <td>Note</td>
-                <td>Actions</td>
+                <!-- <td>Actions</td> -->
             </tr>
         </thead>
         <tbody>
@@ -61,15 +61,15 @@
                 <td></td>                <td></td>                <td></td>                <td></td> <!-- Colonnes vides -->
                 <div><button (click)="reinitialisation()">Réinitialiser les filtres</button></div>
             </tr>
-            <tr class="others-lines" *ngFor="let restaurant of restaurantsFiltered">
+            <tr class="others-lines" *ngFor="let restaurant of restaurantsFiltered; trackByFn: restaurantsFiltered">
                 <td class="text">{{restaurant.name}}</td>
                 <td class="text">{{restaurant.city}}</td>
                 <td class="text">{{restaurant.street}}</td>
                 <td class="text">{{restaurant.email}}</td>
                 <td><app-stars [rating]='restaurant.rate' (ratingClicked)="onRatingClicked($event)"></app-stars></td>
                 <div class="others-lines-actions">
-                    <button routerLink="/details/{{restaurant.id}}">Voir détails</button>
-                    <button disabled>Commentaires</button>
+                    <button routerLink="/details/{{restaurant.id}}">Voir les détails</button>
+                    <button disabled>Actions 2</button>
                     <button disabled>Actions 3</button>
                 </div>
             </tr>

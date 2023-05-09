@@ -17,6 +17,8 @@ export class BoardCommentsComponent {
 
   // Variables __________________________________
   private _listFilter:string="";
+  sortedBy:string="";
+  sortDirection:boolean=true;
   private _restaurants:Restaurant[] = [];
   private _restaurantsFiltered:Restaurant[] = [];
   errorMessage:string="";
@@ -44,11 +46,14 @@ export class BoardCommentsComponent {
   // Getter et Setter __________________________________
   // ___ Liste des restaurants après filtre
   get restaurantsFiltered():Restaurant[]{
-    return this.performFilter(this._listFilter,this.nameCheckBool,this.cityCheckBool,this.streetCheckBool);;
+    this._restaurantsFiltered = this.performFilter(this._listFilter,this.nameCheckBool,this.cityCheckBool,this.streetCheckBool);
+    this.sortBy(this.sortedBy);
+    return this._restaurantsFiltered;
   };
   //___________ setter redondant car le getter fait setter :
   set restaurantsFiltered(value:Restaurant[]){
-    this._restaurantsFiltered = this.performFilter(this._listFilter,this.nameCheckBool,this.cityCheckBool,this.streetCheckBool);
+    // this._restaurantsFiltered = this.performFilter(this._listFilter,this.nameCheckBool,this.cityCheckBool,this.streetCheckBool);
+    // this.sortBy(this.sortedBy);
   };
   // ___ string du filtre
   get listFilter():string{
@@ -113,8 +118,40 @@ export class BoardCommentsComponent {
     this._nameCheckBool = false;
     this._cityCheckBool = false;
     this._streetCheckBool = false;
+  };
+
+  setSortedBy(str:string):void{
+    this.sortedBy = str;
+    this.sortDirection = !this.sortDirection;
   }
 
+  sortBy(sortedBy:string){
+    console.log(this.sortDirection);
+    switch(sortedBy){
+      case "name":{
+        if(this.sortDirection){
+          this._restaurantsFiltered = this._restaurantsFiltered.sort((a,b)=>a.name.localeCompare(b.name));
+        }else{
+          this._restaurantsFiltered = this._restaurantsFiltered.sort((a,b)=>b.name.localeCompare(a.name));
+        }; }; break;
+      case "city":{
+        if(this.sortDirection){
+          this._restaurantsFiltered = this._restaurantsFiltered.sort((a,b)=>a.city.localeCompare(b.city));
+        }else{
+          this._restaurantsFiltered = this._restaurantsFiltered.sort((a,b)=>b.city.localeCompare(a.city));
+        }; }; break;
+      case "street":{
+        if(this.sortDirection){
+          this._restaurantsFiltered = this._restaurantsFiltered.sort((a,b)=>a.street.localeCompare(b.street));
+        }else{
+          this._restaurantsFiltered = this._restaurantsFiltered.sort((a,b)=>b.street.localeCompare(a.street));
+        }; }; break;
+      // case "rate":{
+      //   this._restaurantsFiltered = this._restaurantsFiltered.sort((a,b)=>a.rate.localeCompare(b.rate));
+      // }
+    };
+    
+  };
 
 
 }
