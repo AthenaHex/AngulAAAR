@@ -17,11 +17,11 @@
     </thead>
     <tbody>
         <tr>
-            <!-- <td class="text">{{restaurant.name}}</td> -->
-            <!-- <td class="text">{{restaurant.city}}</td> -->
-            <!-- <td class="text">{{restaurant.street}}</td> -->
-            <!-- <td class="text">{{restaurant.email}}</td> -->
-            <!-- <td><app-stars [rating]='restaurant.rate'></app-stars></td> -->
+            <td class="text">{{restaurant.name}}</td>
+            <td class="text">{{restaurant.city}}</td>
+            <td class="text">{{restaurant.street}}</td>
+            <td class="text">{{restaurant.email}}</td>
+            <td><app-stars [rating]='restaurant.rate'></app-stars></td>
         </tr>
     </tbody>
 </table>
@@ -33,9 +33,9 @@
 <table class="board-comment">
     <thead>
         <tr>
-            <td><button id="sort-arrow" class="arrow-none">^</button>
-            <td><button id="sort-arrow" class="arrow-none">^</button>
-            <td><button id="sort-arrow" class="arrow-none">^</button>
+            <td><button id="sort-arrow" class="arrow-none" (click)="setSortedBy('date')" [ngClass]="arrowDirectionDate()">^</button>
+            <td></td>
+            <td><button id="sort-arrow" class="arrow-none" (click)="setSortedBy('rate')" [ngClass]="arrowDirectionRate()">^</button>
         </tr>
         <tr class="first-line">
             <!-- <td><div>Id </div></td>

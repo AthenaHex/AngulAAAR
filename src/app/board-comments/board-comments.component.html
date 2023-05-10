@@ -39,9 +39,9 @@
     <table class="board-comment">
         <thead>
             <tr>
-                <td><button id="sort-arrow" class="arrow-none" (click)="setSortedBy('name')" [class.arrow-down]="sortedBy === 'name'">^</button>
-                <td><button id="sort-arrow" class="arrow-none" (click)="setSortedBy('city')" [class.arrow-down]="sortedBy === 'city'">^</button>
-                <td><button id="sort-arrow" class="arrow-none" (click)="setSortedBy('street')" [class.arrow-down]="sortedBy === 'street'">^</button>
+                <td><button id="sort-arrow" class="arrow-none" (click)="setSortedBy('name')" [ngClass]="arrowDirectionName()">^</button>
+                <td><button id="sort-arrow" class="arrow-none" (click)="setSortedBy('city')" [ngClass]="arrowDirectionCity()">^</button>
+                <td><button id="sort-arrow" class="arrow-none" (click)="setSortedBy('street')" [ngClass]="arrowDirectionStreet()">^</button>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -68,7 +68,7 @@
                 <td class="text">{{restaurant.email}}</td>
                 <td><app-stars [rating]='restaurant.rate' (ratingClicked)="onRatingClicked($event)"></app-stars></td>
                 <div class="others-lines-actions">
-                    <button routerLink="/details/{{restaurant.id}}">Voir les détails</button>
+                    <button routerLink="/details/{{restaurant.id}}"> Voir les détails</button>
                     <button disabled>Actions 2</button>
                     <button disabled>Actions 3</button>
                 </div>

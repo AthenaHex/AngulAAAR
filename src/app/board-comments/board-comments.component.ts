@@ -18,7 +18,7 @@ export class BoardCommentsComponent {
   // Variables __________________________________
   private _listFilter:string="";
   sortedBy:string="";
-  sortDirection:boolean=true;
+  sortDirection:boolean=true; //true = 
   private _restaurants:Restaurant[] = [];
   private _restaurantsFiltered:Restaurant[] = [];
   errorMessage:string="";
@@ -84,7 +84,11 @@ export class BoardCommentsComponent {
   set streetCheckBool(value:boolean){
     this._streetCheckBool=value;
   }
-
+  // ____ Défini par quoi trier la liste filtrée
+  setSortedBy(str:string):void{
+    this.sortedBy = str;
+    this.sortDirection = !this.sortDirection;
+  }
 
   // Méthodes _____________________________________________________
   // ___ Déclenche un évenement ailleurs lors du click sur les étoiles
@@ -113,19 +117,16 @@ export class BoardCommentsComponent {
     }
     return this._restaurantsFiltered;
   };
-
+  // ___________ Réinitalise les filtres
   reinitialisation():void{
     this._nameCheckBool = false;
     this._cityCheckBool = false;
     this._streetCheckBool = false;
   };
 
-  setSortedBy(str:string):void{
-    this.sortedBy = str;
-    this.sortDirection = !this.sortDirection;
-  }
-
+  // ___________ Trie la liste de restaurant en fonction de l'entré envoyée depuis le front
   sortBy(sortedBy:string){
+    this.sortedBy = sortedBy;
     console.log(this.sortDirection);
     switch(sortedBy){
       case "name":{
@@ -150,10 +151,53 @@ export class BoardCommentsComponent {
       //   this._restaurantsFiltered = this._restaurantsFiltered.sort((a,b)=>a.rate.localeCompare(b.rate));
       // }
     };
-    
   };
+
+  // _______ Défini la classe css des flèches de trie pour les faire tourner en fonction de leur utilisation
+  // ___________ class de la flèche de nom
+  arrowDirectionName():string{
+  if(this.sortedBy==="name"){
+    this.sortDirection = !this.sortDirection;
+    if(this.sortDirection){
+      return "arrow-down";
+    }else{
+      return "arrow-up";
+    };
+  }else{
+    return "arrow-none";
+    };
+  }
+  // ___________ class de la flèche de ville
+  arrowDirectionCity():string{
+    if(this.sortedBy==="city"){
+      this.sortDirection = !this.sortDirection;
+      if(this.sortDirection){
+        return "arrow-down";
+      }else{
+        return "arrow-up";
+      };
+    }else{
+      return "arrow-none";
+      };
+    }
+  // ___________ class de la flèche de rue
+    arrowDirectionStreet():string{
+      if(this.sortedBy==="street"){
+        this.sortDirection = !this.sortDirection;
+        if(this.sortDirection){
+          return "arrow-down";
+        }else{
+          return "arrow-up";
+        };
+      }else{
+        return "arrow-none";
+        };
+      }
+
+
+
+
+
 
 
 }
-
-
