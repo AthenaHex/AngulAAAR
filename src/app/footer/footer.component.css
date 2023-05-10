@@ -2,9 +2,18 @@
 
 
 
+.container{
+    padding: 2%;
 
+}
 
+.text{
+    color:aliceblue;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    line-height: 20px;
 
+}
 
 
 

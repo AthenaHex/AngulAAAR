@@ -14,9 +14,14 @@ import { BoardCommentsComponent } from './board-comments/board-comments.componen
 import { ForkComponent } from './fork/fork.component';
 import { StarsComponent } from './stars/stars.component';
 import { DetailsComponent } from './board-comments/details.component';
+import { FooterComponent } from './footer/footer.component';
+import { BoardOnlyCommentsComponent } from './board-only-comments/board-only-comments.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './home/home.component';
 // ___ le routage
 import { RouterModule } from '@angular/router';
-import { FooterComponent } from './footer/footer.component';
+
 
 
 
@@ -32,15 +37,23 @@ import { FooterComponent } from './footer/footer.component';
     StarsComponent,
     DetailsComponent,
     FooterComponent,
+    BoardOnlyCommentsComponent,
+    AboutUsComponent,
+    ContactComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
+      { path: 'home', component: HomeComponent},
       { path: 'list', component: BoardCommentsComponent},
+      { path: 'comments', component: BoardOnlyCommentsComponent},
+      { path: 'contact', component: ContactComponent},
+      { path: 'about', component: AboutUsComponent},
       { path: 'details/:idRestaurant', component: DetailsComponent},
-      { path: '', redirectTo: 'restaurants-advice', pathMatch: 'full' },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       //{ path: '**', redirectTo: 'restaurants-advice', pathMatch: 'full'},
     ]),
   ],

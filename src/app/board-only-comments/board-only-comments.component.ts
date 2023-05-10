@@ -1,21 +1,20 @@
 import { Component } from '@angular/core';
 import { Comment } from '../comment';
 import { CommentService } from '../comment.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Restaurant } from '../restaurant';
 import { RestaurantService } from '../restaurant.service';
 
+
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css'],
+  selector: 'app-board-only-comments',
+  templateUrl: './board-only-comments.component.html',
+  styleUrls: ['./board-only-comments.component.css'],
   providers:[CommentService],
 })
-export class DetailsComponent {
+export class BoardOnlyCommentsComponent {
 
   // Variables __________________________________
   private _comments:Comment[] = [];
-  private _commentsFiltered:Comment[] = [];
   errorMessage:string="error service";
   private _idRestaurant:number = 0;
   private _restaurants:Restaurant[] = [];
@@ -24,7 +23,7 @@ export class DetailsComponent {
   sortDirection:boolean=true; //true = 
 
   // ___ Le constructeur défini la dépendance et le paramètre de route
-  constructor(private commentsService:CommentService, private route: ActivatedRoute, private restaurantsService:RestaurantService){
+  constructor(private commentsService:CommentService, private restaurantsService:RestaurantService){
 
   };
 
@@ -47,34 +46,19 @@ export class DetailsComponent {
       error:                               // if not ok
         err => this.errorMessage = err        // Message d'erreur
     });
-    // _______ Défini l'id du restaurant dont on veut les détails
-    this._idRestaurant = this.route.snapshot.params['idRestaurant']; 
   };
 
 
   // Getter et Setter __________________________________
   // ___ Liste de commentaires du restaurant
   get commentsFiltered():Comment[]{
-    this._commentsFiltered = this.getCommentsByRestaurant(this._idRestaurant);
     this.sortBy(this.sortedBy);
-    return this._commentsFiltered;
+    return this._comments;
   };
 
   get restaurant():any{
     this._restaurant = this._restaurants.find(rest => rest.id == this._idRestaurant);;
     return this._restaurant;
-  }
-
-  getCommentsByRestaurant(idRestaurant:number):Comment[]{
-    this._commentsFiltered = this._comments; // On commence ac all commentaires
-
-    // Filtre à mettre ici
-    this._commentsFiltered = this._commentsFiltered.filter((comm:Comment) =>
-      comm.commentRestaurantId == idRestaurant );
-    // ____________
-
-    console.log(JSON.stringify(this._commentsFiltered));
-    return this._commentsFiltered;
   }
 
   // ____ Défini par quoi trier la liste filtrée
@@ -89,15 +73,15 @@ export class DetailsComponent {
     switch(sortedBy){
       case "date":{
         if(this.sortDirection){
-          this._commentsFiltered = this._commentsFiltered.sort((a,b)=>a.postDate.localeCompare(b.postDate));
+          this._comments = this._comments.sort((a,b)=>a.postDate.localeCompare(b.postDate));
         }else{
-          this._commentsFiltered = this._commentsFiltered.sort((a,b)=>b.postDate.localeCompare(a.postDate));
+          this._comments = this._comments.sort((a,b)=>b.postDate.localeCompare(a.postDate));
         }; }; break;
       case "rate":{
         if(this.sortDirection){
-          this._commentsFiltered = this._commentsFiltered.sort((a,b)=>a.commentRate.toString().localeCompare(b.commentRate.toString(), undefined, { numeric: true, sensitivity: 'base' }));
+          this._comments = this._comments.sort((a,b)=>a.commentRate.toString().localeCompare(b.commentRate.toString(), undefined, { numeric: true, sensitivity: 'base' }));
         }else{
-          this._commentsFiltered = this._commentsFiltered.sort((a,b)=>b.commentRate.toString().localeCompare(a.commentRate.toString(), undefined, { numeric: true, sensitivity: 'base' }));
+          this._comments = this._comments.sort((a,b)=>b.commentRate.toString().localeCompare(a.commentRate.toString(), undefined, { numeric: true, sensitivity: 'base' }));
         }; }; break;
     };
   }

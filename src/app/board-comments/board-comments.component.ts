@@ -17,7 +17,7 @@ export class BoardCommentsComponent {
 
   // Variables __________________________________
   private _listFilter:string="";
-  sortedBy:string="";
+  sortedBy:string="error service";
   sortDirection:boolean=true; //true = 
   private _restaurants:Restaurant[] = [];
   private _restaurantsFiltered:Restaurant[] = [];
